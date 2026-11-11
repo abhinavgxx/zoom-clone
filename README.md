@@ -361,4 +361,4 @@ GitHub: https://github.com/abhinavgxx
 
 ---
 
-*Built as an SDE Fullstack Assignment – Zoom-like Video Conferencing Platform.*
+*Built as an SDE Fullstack Assignment - Zoom-like Video Conferencing Platform.*
