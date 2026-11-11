@@ -113,8 +113,12 @@ useEffect(() => {
     return;
   }
 
+  const WS_BASE_URL =
+    process.env.NEXT_PUBLIC_API_URL?.replace(/^http/, "ws") ||
+    "ws://127.0.0.1:8000";
+
   const socket = new WebSocket(
-    `ws://127.0.0.1:8000/ws/${meetingId}/${participantId}`
+    `${WS_BASE_URL}/ws/${meetingId}/${participantId}`
   );
 
   socket.onopen = () => {
