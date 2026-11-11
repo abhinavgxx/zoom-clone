@@ -1,4 +1,7 @@
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -20,9 +23,16 @@ app = FastAPI(title="Zoom Clone Backend")
 
 
 # Allow Next.js frontend to communicate with FastAPI
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+
+allowed_origins = [
+    "http://localhost:3000",
+    frontend_url
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
